@@ -5,23 +5,30 @@ using ProyectoDepreciación.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 1. Agregar Controladores
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();  // <- esto genera el /openapi/v1.json
 
+// 2. Configurar Swagger / OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// 3. Configurar Base de Datos SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// 4. Inyección de Dependencias (Repositores y Casos de Uso)
 builder.Services.AddScoped<IActivoRepository, ActivoRepository>();
 builder.Services.AddScoped<RegistrarActivo>();
 
 var app = builder.Build();
 
+// 5. Configurar Pipeline de Peticiones en Desarrollo
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     });
 }
 

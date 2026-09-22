@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+/* Contenedor dividido en pantalla completa */
+.split-login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0d0e10;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+/* =========================================================
+   SECCIÓN IZQUIERDA: FORMULARIO DE LOGIN
+   ========================================================= */
+.login-form-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  background-color: #121316;
+}
+
+.form-content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.form-subtitle {
+  font-size: 0.88rem;
+  color: #888c96;
+  margin-bottom: 2.5rem;
+}
+
+.error-banner {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #a0a4b0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 0.2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #2a2d35;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: border-color 0.25s ease;
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus {
+  outline: none;
+  border-bottom-color: #ffffff;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 5px;
+  background: transparent;
+  border: none;
+  color: #717582;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.eye-icon:hover {
+  color: #ffffff;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.2rem;
+  font-size: 0.85rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9ea2ae;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  accent-color: #ffffff;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: #9ea2ae;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: #ffffff;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.95rem;
+  background-color: #ffffff;
+  color: #0d0e10;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-submit:hover {
+  background-color: #e2e4e9;
+  border-color: #e2e4e9;
+}
+
+/* =========================================================
+   SECCIÓN DERECHA: LOGO Y PANEL VISUAL
+   ========================================================= */
+.login-visual-section {
+  flex: 1.2;
+  background: linear-gradient(135deg, #181a1f 0%, #0d0e11 100%);
+  border-left: 1px solid #22252c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.visual-content {
+  text-align: center;
+  max-width: 480px;
+}
+
+.assets-logo-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.assets-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+}
+
+/* Título estilizado en letra Cursiva/Script elegida */
+.system-title-cursive {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.system-tagline {
+  font-size: 0.9rem;
+  color: #7e8390;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Diseño adaptativo para dispositivos móviles */
+@media (max-width: 900px) {
+  .split-login-container {
+    flex-direction: column;
+  }
+  .login-visual-section {
+    border-left: none;
+    border-top: 1px solid #22252c;
+    order: -1;
+    padding: 2rem 1rem;
+  }
+  .system-title-cursive {
+    font-size: 2.2rem;
+  }
+}

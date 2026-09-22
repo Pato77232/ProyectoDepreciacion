@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Compilación .NET
+bin/
+obj/
+
+# Node / React
+node_modules/
+dist/
+.env
+
+# Otros
+*.log

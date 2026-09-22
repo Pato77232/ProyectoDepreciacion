@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|c:\\users\\pcwin\\desktop\\appsuta\\proyectodepreciaci\u00F3n\\proyectodepreciaci\u00F3n\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|solutionrelative:proyectodepreciaci\u00F3n\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|c:\\users\\pcwin\\desktop\\appsuta\\proyectodepreciaci\u00F3n\\proyectodepreciaci\u00F3n\\models\\activo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|solutionrelative:proyectodepreciaci\u00F3n\\models\\activo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|c:\\users\\pcwin\\desktop\\appsuta\\proyectodepreciaci\u00F3n\\proyectodepreciaci\u00F3n\\proyectodepreciaci\u00F3n.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8F98C41A-5B68-4E66-9310-68E46E447878}|ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj|solutionrelative:proyectodepreciaci\u00F3n\\proyectodepreciaci\u00F3n.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "ProyectoDepreciaci\u00F3n\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\Models\\Usuario.cs",
+              "RelativeToolTip": "ProyectoDepreciaci\u00F3n\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T22:35:53.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Activo.cs",
+              "DocumentMoniker": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\Models\\Activo.cs",
+              "RelativeDocumentMoniker": "ProyectoDepreciaci\u00F3n\\Models\\Activo.cs",
+              "ToolTip": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\Models\\Activo.cs",
+              "RelativeToolTip": "ProyectoDepreciaci\u00F3n\\Models\\Activo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T22:35:43.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProyectoDepreciaci\u00F3n",
+              "DocumentMoniker": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj",
+              "RelativeDocumentMoniker": "ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj",
+              "ToolTip": "C:\\Users\\PCWIN\\Desktop\\AppsUTA\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj",
+              "RelativeToolTip": "ProyectoDepreciaci\u00F3n\\ProyectoDepreciaci\u00F3n.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-21T22:30:52.391Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

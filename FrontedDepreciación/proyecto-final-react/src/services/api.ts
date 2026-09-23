@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 const authApi = axios.create({
-  baseURL: 'https://localhost:7040/api',
+  baseURL: 'https://localhost:7267/api',
 });
 
 const activosApi = axios.create({
-  baseURL: 'https://localhost:7097/api',
+  baseURL: 'https://localhost:7267/api',
+});
+
+const reportesApi = axios.create({
+  baseURL: 'https://localhost:7267/api',
 });
 
 const attachToken = (config: any) => {
@@ -16,5 +20,6 @@ const attachToken = (config: any) => {
 
 authApi.interceptors.request.use(attachToken);
 activosApi.interceptors.request.use(attachToken);
+reportesApi.interceptors.request.use(attachToken);
 
-export { authApi, activosApi };
+export { authApi, activosApi, reportesApi };

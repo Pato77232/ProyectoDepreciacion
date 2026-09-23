@@ -15,7 +15,6 @@ export const Activos = () => {
     nombre: '',
     categoria: 'Computo',
     costoAdquisicion: 0,
-    valorResidual: 0,
     fechaAdquisicion: '',
   });
 
@@ -39,7 +38,7 @@ export const Activos = () => {
     e.preventDefault();
     try {
       await crearActivo(nuevoActivo);
-      setNuevoActivo({ nombre: '', categoria: 'Computo', costoAdquisicion: 0, valorResidual: 0, fechaAdquisicion: '' });
+      setNuevoActivo({ nombre: '', categoria: 'Computo', costoAdquisicion: 0, fechaAdquisicion: '' });
       cargarActivos();
     } catch (err) {
       setError('Error al crear el activo. Verifica los datos o tus permisos.');
@@ -88,13 +87,6 @@ export const Activos = () => {
           placeholder="Costo"
           value={nuevoActivo.costoAdquisicion || ''}
           onChange={(e) => setNuevoActivo({ ...nuevoActivo, costoAdquisicion: Number(e.target.value) })}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Valor residual"
-          value={nuevoActivo.valorResidual || ''}
-          onChange={(e) => setNuevoActivo({ ...nuevoActivo, valorResidual: Number(e.target.value) })}
           required
         />
         <input

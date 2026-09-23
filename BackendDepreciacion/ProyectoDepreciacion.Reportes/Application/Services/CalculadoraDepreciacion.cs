@@ -1,15 +1,12 @@
-using ProyectoDepreciación.Domain.Entities;
+using ProyectoDepreciacion.Reportes.Application.DTOs;
 
-namespace ProyectoDepreciación.Domain.Services;
-
-public record DepreciacionAnual(int Anio, int MesesDepreciados, decimal DepreciacionDelAnio,
-                                  decimal DepreciacionAcumulada, decimal ValorEnLibros);
+namespace ProyectoDepreciacion.Reportes.Application.Services;
 
 public class CalculadoraDepreciacion
 {
-    public List<DepreciacionAnual> GenerarTabla(Activo activo)
+    public List<DepreciacionAnualDto> GenerarTabla(ActivoDto activo)
     {
-        var resultado = new List<DepreciacionAnual>();
+        var resultado = new List<DepreciacionAnualDto>();
         decimal baseDepreciable = activo.CostoAdquisicion - activo.ValorResidual;
         decimal depreciacionMensual = (baseDepreciable * (activo.PorcentajeAnual / 100m)) / 12;
         int mesesVidaUtilTotal = activo.VidaUtilAnios * 12;
@@ -32,9 +29,14 @@ public class CalculadoraDepreciacion
             depreciacionAcumulada += depreciacionEsteAnio;
             mesesAcumulados += mesesEsteAnio;
 
-            resultado.Add(new DepreciacionAnual(anioActual, mesesEsteAnio,
-                Math.Round(depreciacionEsteAnio, 2), Math.Round(depreciacionAcumulada, 2),
-                Math.Round(activo.CostoAdquisicion - depreciacionAcumulada, 2)));
+            resultado.Add(new DepreciacionAnualDto
+            {
+                Anio = anioActual,
+                MesesDepreciados = mesesEsteAnio,
+                DepreciacionDelAnio = Math.Round(depreciacionEsteAnio, 2),
+                DepreciacionAcumulada = Math.Round(depreciacionAcumulada, 2),
+                ValorEnLibros = Math.Round(activo.CostoAdquisicion - depreciacionAcumulada, 2)
+            });
 
             anioActual++;
             mesCursor = 1;

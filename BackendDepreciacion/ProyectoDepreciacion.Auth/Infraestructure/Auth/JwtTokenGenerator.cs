@@ -18,7 +18,7 @@ public class JwtTokenGenerator
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, usuario.NombreUsuario),
-            new Claim(ClaimTypes.Role, usuario.Rol),
+            new Claim(ClaimTypes.Role, NormalizarRol(usuario.Rol)),
             new Claim("id", usuario.Id.ToString())
         };
 
@@ -35,4 +35,13 @@ public class JwtTokenGenerator
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    private static string NormalizarRol(string rol) =>
+        rol.Trim().ToLowerInvariant() switch
+        {
+            "admin" => "Admin",
+            "contador" => "Contador",
+            "auditor" => "Auditor",
+            _ => rol.Trim()
+        };
 }

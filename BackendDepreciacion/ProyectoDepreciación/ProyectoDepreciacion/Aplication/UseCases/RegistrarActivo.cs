@@ -14,9 +14,7 @@ public class RegistrarActivo
     {
         var (vidaUtil, porcentaje) = ObtenerParametrosPorCategoria(dto.Categoria);
 
-        decimal valorResidual = dto.ValorResidual > 0
-            ? dto.ValorResidual
-            : Math.Round(dto.CostoAdquisicion * 0.10m, 2);
+        decimal valorResidual = Math.Round(dto.CostoAdquisicion * 0.10m, 2);
 
         var activo = new Activo(dto.Nombre, dto.Categoria, dto.CostoAdquisicion,
             valorResidual, dto.FechaAdquisicion, vidaUtil, porcentaje);

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProyectoDepreciación.Application.Interfaces;
 using ProyectoDepreciación.Application.UseCases;
-using ProyectoDepreciación.Domain.Services;
 using ProyectoDepreciación.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -23,10 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // 4. Inyección de Dependencias (Repositores y Casos de Uso)
 builder.Services.AddScoped<IActivoRepository, ActivoRepository>();
 builder.Services.AddScoped<RegistrarActivo>();
-
-builder.Services.AddScoped<CalculadoraDepreciacion>();
-builder.Services.AddScoped<GenerarReporteDepreciacion>();
-
+builder.Services.AddScoped<ObtenerActivo>();
 builder.Services.AddScoped<ListarActivos>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -45,19 +41,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
-builder.Services.AddScoped<GenerarReporteConsolidado>();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("PermitirFrontend", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173") // ajusta si Vite usa otro puerto
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
 var app = builder.Build();
 app.UseHttpsRedirection();
-app.UseCors("PermitirFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 // 5. Configurar Pipeline de Peticiones en Desarrollo

@@ -11,13 +11,13 @@ namespace ProyectoDepreciación.Presentation.Controllers;
 public class ActivosController : ControllerBase
 {
     private readonly RegistrarActivo _registrarActivo;
-    private readonly GenerarReporteDepreciacion _generarReporte;
+    private readonly ObtenerActivo _obtenerActivo;
     private readonly ListarActivos _listarActivos;
 
-    public ActivosController(RegistrarActivo registrarActivo, GenerarReporteDepreciacion generarReporte, ListarActivos listarActivos)
+    public ActivosController(RegistrarActivo registrarActivo, ObtenerActivo obtenerActivo, ListarActivos listarActivos)
     {
         _registrarActivo = registrarActivo;
-        _generarReporte = generarReporte;
+        _obtenerActivo = obtenerActivo;
         _listarActivos = listarActivos;
     }
 
@@ -29,14 +29,14 @@ public class ActivosController : ControllerBase
         return Ok(activo);
     }
 
-    [HttpGet("{id}/depreciacion")]
-    public async Task<IActionResult> ObtenerDepreciacion(int id)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> ObtenerPorId(int id)
     {
-        var reporte = await _generarReporte.EjecutarAsync(id);
-        if (reporte is null)
+        var activo = await _obtenerActivo.EjecutarAsync(id);
+        if (activo is null)
             return NotFound($"No se encontró el activo con Id {id}.");
 
-        return Ok(reporte);
+        return Ok(activo);
     }
 
     [HttpGet]

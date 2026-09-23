@@ -5,7 +5,7 @@
 namespace ProyectoDepreciacion.Auth.Migrations
 {
     /// <inheritdoc />
-    public partial class auth_separado_completo : Migration
+    public partial class auth_separado_completo : Migration 
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -12,6 +12,10 @@ const reportesApi = axios.create({
   baseURL: 'https://localhost:7267/api',
 });
 
+const informacionApi = axios.create({
+  baseURL: 'https://localhost:7280/api',
+});
+
 const attachToken = (config: any) => {
   const token = localStorage.getItem('token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
@@ -21,5 +25,6 @@ const attachToken = (config: any) => {
 authApi.interceptors.request.use(attachToken);
 activosApi.interceptors.request.use(attachToken);
 reportesApi.interceptors.request.use(attachToken);
+informacionApi.interceptors.request.use(attachToken);
 
-export { authApi, activosApi, reportesApi };
+export { authApi, activosApi, reportesApi, informacionApi };

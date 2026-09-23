@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { obtenerActivos, crearActivo, obtenerReporteDepreciacion, descargarReporteDepreciacion } from '../services/activosService';
 import type { Activo, ActivoRequest, ReporteDepreciacion } from '../services/activosService';
+import { obtenerInformacionDepreciacion } from '../services/informacionService';
+import type { InformacionDepreciacion } from '../services/informacionService';
 import { useAuth } from '../context/AuthContext';
 import './Activos.css';
 
@@ -9,6 +11,7 @@ export const Activos = () => {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
   const [reporte, setReporte] = useState<ReporteDepreciacion | null>(null);
+  const [informaciones, setInformaciones] = useState<InformacionDepreciacion[]>([]);
   const { nombreUsuario, rol, cerrarSesion } = useAuth();
 
   const [nuevoActivo, setNuevoActivo] = useState<ActivoRequest>({
@@ -32,7 +35,17 @@ export const Activos = () => {
 
   useEffect(() => {
     cargarActivos();
+    cargarInformacion();
   }, []);
+
+  const cargarInformacion = async () => {
+    try {
+      const data = await obtenerInformacionDepreciacion();
+      setInformaciones(data);
+    } catch (err) {
+      setError('No se pudo cargar la información de depreciación.');
+    }
+  };
 
   const handleCrear = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,6 +159,40 @@ export const Activos = () => {
           </tbody>
         </table>
       )}
+
+      <section className="seccion-informacion">
+        <div className="seccion-informacion-header">
+          <div>
+            <p className="seccion-etiqueta">Información adicional</p>
+            <h2>Detalle de depreciación</h2>
+          </div>
+          <span className="contador-registros">Información vigente</span>
+        </div>
+
+        <div className="tabla-informacion-wrapper">
+          <table className="tabla-activos tabla-informacion">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Áreas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {informaciones.map((informacion) => (
+                <tr key={informacion.id}>
+                  <td>{informacion.fecha.split('T')[0].split('-').reverse().join('/')}</td>
+                  <td>{informacion.descripcion}</td>
+                  <td>{informacion.areas}</td>
+                </tr>
+              ))}
+              {informaciones.length === 0 && (
+                <tr><td colSpan={3} className="sin-registros">No hay información registrada.</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       {reporte && (
         <div className="modal-overlay" onClick={() => setReporte(null)}>

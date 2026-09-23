@@ -121,6 +121,66 @@
   margin-bottom: 1.5rem;
   font-size: 0.85rem;
 }
+
+.seccion-informacion {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #2a2d35;
+}
+
+.seccion-informacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 1.25rem;
+}
+
+.seccion-informacion h2 {
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.seccion-etiqueta {
+  color: #a0a4b0;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.contador-registros {
+  color: #a0a4b0;
+  font-size: 0.8rem;
+}
+
+.tabla-informacion-wrapper {
+  overflow-x: auto;
+}
+
+.tabla-informacion td:first-child {
+  white-space: nowrap;
+  color: #c6cad3;
+}
+
+.sin-registros {
+  color: #a0a4b0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .activos-container {
+    padding: 1.5rem;
+  }
+
+  .activos-header,
+  .seccion-informacion-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+}
 .btn-ver-reporte {
   background-color: transparent;
   border: 1px solid #3a3d47;

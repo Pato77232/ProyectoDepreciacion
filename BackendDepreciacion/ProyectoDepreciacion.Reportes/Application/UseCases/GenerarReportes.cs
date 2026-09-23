@@ -27,6 +27,7 @@ public class GenerarReportes
             NombreActivo = activo.Nombre,
             CostoAdquisicion = activo.CostoAdquisicion,
             ValorResidual = activo.ValorResidual,
+            FechaAdquisicion = activo.FechaAdquisicion,
             Tabla = _calculadora.GenerarTabla(activo)
         };
     }

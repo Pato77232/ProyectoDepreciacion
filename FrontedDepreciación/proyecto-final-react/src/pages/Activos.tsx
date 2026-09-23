@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { obtenerActivos, crearActivo, obtenerReporteDepreciacion } from '../services/activosService';
+import { obtenerActivos, crearActivo, obtenerReporteDepreciacion, descargarReporteDepreciacion } from '../services/activosService';
 import type { Activo, ActivoRequest, ReporteDepreciacion } from '../services/activosService';
 import { useAuth } from '../context/AuthContext';
 import './Activos.css';
@@ -51,6 +51,22 @@ export const Activos = () => {
       setReporte(data);
     } catch (err) {
       setError('No se pudo cargar el reporte de depreciación.');
+    }
+  };
+
+  const descargarReportePdf = async () => {
+    if (!reporte) return;
+
+    try {
+      const archivo = await descargarReporteDepreciacion(reporte.activoId);
+      const url = URL.createObjectURL(archivo);
+      const enlace = document.createElement('a');
+      enlace.href = url;
+      enlace.download = `reporte-depreciacion-${reporte.activoId}.pdf`;
+      enlace.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      setError('No se pudo descargar el reporte PDF.');
     }
   };
 
@@ -136,7 +152,10 @@ export const Activos = () => {
           <div className="modal-reporte" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h2>{reporte.nombreActivo}</h2>
-              <button className="btn-cerrar-modal" onClick={() => setReporte(null)}>✕</button>
+              <div className="modal-actions">
+                <button className="btn-descargar-pdf" onClick={descargarReportePdf}>Descargar PDF</button>
+                <button className="btn-cerrar-modal" onClick={() => setReporte(null)}>X</button>
+              </div>
             </div>
             <p className="modal-subtitulo">
               Costo: ${reporte.costoAdquisicion} — Valor residual: ${reporte.valorResidual}
@@ -148,7 +167,7 @@ export const Activos = () => {
                   <th>Meses</th>
                   <th>Depreciación del año</th>
                   <th>Acumulada</th>
-                  <th>Valor en libros</th>
+                  <th>Valor Actual</th>
                 </tr>
               </thead>
               <tbody>

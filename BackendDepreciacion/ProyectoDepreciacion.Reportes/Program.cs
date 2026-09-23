@@ -3,15 +3,19 @@ using Microsoft.IdentityModel.Tokens;
 using ProyectoDepreciacion.Reportes.Application.Services;
 using ProyectoDepreciacion.Reportes.Application.UseCases;
 using ProyectoDepreciacion.Reportes.Infrastructure;
+using QuestPDF.Infrastructure;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<CalculadoraDepreciacion>();
 builder.Services.AddScoped<GenerarReportes>();
+builder.Services.AddScoped<ReportePdfGenerator>();
 builder.Services.AddHttpClient<ActivosClient>(client =>
     client.BaseAddress = new Uri(builder.Configuration["Services:Activos"]!));
 

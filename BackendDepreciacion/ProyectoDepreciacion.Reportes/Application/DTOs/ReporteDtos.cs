@@ -26,6 +26,7 @@ public class ReporteDepreciacionDto
     public string NombreActivo { get; set; } = string.Empty;
     public decimal CostoAdquisicion { get; set; }
     public decimal ValorResidual { get; set; }
+    public DateTime FechaAdquisicion { get; set; }
     public List<DepreciacionAnualDto> Tabla { get; set; } = new();
 }
 

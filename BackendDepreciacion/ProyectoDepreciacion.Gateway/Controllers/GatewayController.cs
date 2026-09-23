@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,10 @@ public class GatewayController : ControllerBase
     public Task<IActionResult> ObtenerReporte(int activoId, CancellationToken cancellationToken) =>
         ForwardAsync("ReportesService", HttpMethod.Get, $"Reportes/depreciacion/activo/{activoId}", null, cancellationToken);
 
+    [HttpGet("Reportes/depreciacion/activo/{activoId:int}/pdf")]
+    public Task<IActionResult> DescargarReporte(int activoId, CancellationToken cancellationToken) =>
+        ForwardFileAsync("ReportesService", $"Reportes/depreciacion/activo/{activoId}/pdf", cancellationToken);
+
     [HttpGet("Reportes/depreciacion/{anio:int}")]
     public Task<IActionResult> ObtenerReporteAnual(int anio, CancellationToken cancellationToken) =>
         ForwardAsync("ReportesService", HttpMethod.Get, $"Reportes/depreciacion/{anio}", null, cancellationToken);
@@ -69,5 +74,26 @@ public class GatewayController : ControllerBase
             Content = content,
             ContentType = contentType
         };
+    }
+
+    private async Task<IActionResult> ForwardFileAsync(string clientName, string path, CancellationToken cancellationToken)
+    {
+        var client = _httpClientFactory.CreateClient(clientName);
+        using var request = new HttpRequestMessage(HttpMethod.Get, path);
+
+        if (Request.Headers.TryGetValue("Authorization", out var authorization))
+            request.Headers.Authorization = AuthenticationHeaderValue.Parse(authorization.ToString());
+
+        using var response = await client.SendAsync(request, cancellationToken);
+        var content = await response.Content.ReadAsByteArrayAsync(cancellationToken);
+        if (!response.IsSuccessStatusCode)
+            return new ContentResult
+            {
+                StatusCode = (int)response.StatusCode,
+                Content = Encoding.UTF8.GetString(content),
+                ContentType = response.Content.Headers.ContentType?.ToString() ?? "application/json"
+            };
+
+        return File(content, "application/pdf", $"reporte-{DateTime.UtcNow:yyyyMMddHHmmss}.pdf");
     }
 }

@@ -49,3 +49,10 @@ export const obtenerReporteDepreciacion = async (id: number): Promise<ReporteDep
   const response = await reportesApi.get<ReporteDepreciacion>(`/Reportes/depreciacion/activo/${id}`);
   return response.data;
 };
+
+export const descargarReporteDepreciacion = async (id: number): Promise<Blob> => {
+  const response = await reportesApi.get<Blob>(`/Reportes/depreciacion/activo/${id}/pdf`, {
+    responseType: 'blob',
+  });
+  return response.data;
+};

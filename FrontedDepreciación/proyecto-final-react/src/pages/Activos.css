@@ -186,3 +186,25 @@
   font-size: 0.85rem;
   margin-bottom: 1.5rem;
 }
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-descargar-pdf {
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  color: #0d0e10;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.btn-descargar-pdf:hover {
+  background-color: #dfe4eb;
+  border-color: #dfe4eb;
+}

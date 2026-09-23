@@ -9,5 +9,5 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Activo> Activos => Set<Activo>();
 
-    public DbSet<Usuario> Usuarios => Set<Usuario>();
+    
 }

@@ -1,16 +1,20 @@
 import axios from 'axios';
 
-const api = axios.create({
+const authApi = axios.create({
+  baseURL: 'https://localhost:7040/api',
+});
+
+const activosApi = axios.create({
   baseURL: 'https://localhost:7097/api',
 });
 
-// Adjunta el token a cada petición automáticamente, si existe
-api.interceptors.request.use((config) => {
+const attachToken = (config: any) => {
   const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
-});
+};
 
-export default api;
+authApi.interceptors.request.use(attachToken);
+activosApi.interceptors.request.use(attachToken);
+
+export { authApi, activosApi };

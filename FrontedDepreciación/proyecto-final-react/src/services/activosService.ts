@@ -1,4 +1,4 @@
-import api from './api';
+import { activosApi } from './api';
 
 export interface Activo {
   id: number;
@@ -37,16 +37,16 @@ export interface ReporteDepreciacion {
 }
 
 export const obtenerActivos = async (): Promise<Activo[]> => {
-  const response = await api.get<Activo[]>('/Activos');
+  const response = await activosApi.get<Activo[]>('/Activos');
   return response.data;
 };
 
 export const crearActivo = async (dto: ActivoRequest): Promise<Activo> => {
-  const response = await api.post<Activo>('/Activos', dto);
+  const response = await activosApi.post<Activo>('/Activos', dto);
   return response.data;
 };
 
 export const obtenerReporteDepreciacion = async (id: number): Promise<ReporteDepreciacion> => {
-  const response = await api.get<ReporteDepreciacion>(`/Activos/${id}/depreciacion`);
+  const response = await activosApi.get<ReporteDepreciacion>(`/Activos/${id}/depreciacion`);
   return response.data;
 };

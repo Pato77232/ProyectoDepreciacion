@@ -1,4 +1,4 @@
-import api from './api';
+import { authApi } from './api';
 
 export interface LoginRequest {
   nombreUsuario: string;
@@ -12,7 +12,7 @@ export interface LoginResponse {
 }
 
 export const login = async (credenciales: LoginRequest): Promise<LoginResponse> => {
-  const response = await api.post<LoginResponse>('/Auth/login', credenciales);
+  const response = await authApi.post<LoginResponse>('/Auth/login', credenciales);
   return response.data;
 };
 
@@ -23,5 +23,5 @@ export interface RegistroRequest {
 }
 
 export const registrar = async (dto: RegistroRequest): Promise<void> => {
-  await api.post('/Auth/registro', dto);
+  await authApi.post('/Auth/registro', dto);
 };

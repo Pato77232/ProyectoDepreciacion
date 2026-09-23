@@ -5,7 +5,6 @@ using ProyectoDepreciación.Domain.Services;
 using ProyectoDepreciación.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using ProyectoDepreciación.Infrastructure.Auth;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,10 +28,6 @@ builder.Services.AddScoped<CalculadoraDepreciacion>();
 builder.Services.AddScoped<GenerarReporteDepreciacion>();
 
 builder.Services.AddScoped<ListarActivos>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<RegistrarUsuario>();
-builder.Services.AddScoped<LoginUsuario>();
-builder.Services.AddScoped<JwtTokenGenerator>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

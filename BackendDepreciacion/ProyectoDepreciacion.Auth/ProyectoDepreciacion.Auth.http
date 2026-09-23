@@ -1,0 +1,6 @@
+@ProyectoDepreciacion.Auth_HostAddress = http://localhost:5194
+
+GET {{ProyectoDepreciacion.Auth_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

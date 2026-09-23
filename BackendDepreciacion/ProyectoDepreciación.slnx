@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="ProyectoDepreciacion.Auth/ProyectoDepreciacion.Auth.csproj" Id="f54319b0-fc36-49b8-88ad-f7bbde4fb150" />
+  <Project Path="ProyectoDepreciacion.Gateway/ProyectoDepreciacion.Gateway.csproj" Id="96ddb5af-3ece-46b3-86a1-8999f0cfe5e8" />
+  <Project Path="ProyectoDepreciacion.Reportes/ProyectoDepreciacion.Reportes.csproj" Id="f5bc47ea-bc2f-4291-b431-08b5d597fda1" />
   <Project Path="ProyectoDepreciación/ProyectoDepreciación.csproj" />
 </Solution>

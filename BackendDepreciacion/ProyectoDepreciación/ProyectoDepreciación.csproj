@@ -11,21 +11,29 @@
     <Compile Remove="Controllers\**" />
     <Compile Remove="Data\**" />
     <Compile Remove="DTOs\**" />
+    <Compile Remove="ProyectoDepreciacion.Auth\**" />
+    <Compile Remove="ProyectoDepreciacion.Reportes\**" />
     <Compile Remove="Services\**" />
     <Content Remove="Auth\**" />
     <Content Remove="Controllers\**" />
     <Content Remove="Data\**" />
     <Content Remove="DTOs\**" />
+    <Content Remove="ProyectoDepreciacion.Auth\**" />
+    <Content Remove="ProyectoDepreciacion.Reportes\**" />
     <Content Remove="Services\**" />
     <EmbeddedResource Remove="Auth\**" />
     <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="DTOs\**" />
+    <EmbeddedResource Remove="ProyectoDepreciacion.Auth\**" />
+    <EmbeddedResource Remove="ProyectoDepreciacion.Reportes\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Auth\**" />
     <None Remove="Controllers\**" />
     <None Remove="Data\**" />
     <None Remove="DTOs\**" />
+    <None Remove="ProyectoDepreciacion.Auth\**" />
+    <None Remove="ProyectoDepreciacion.Reportes\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 
@@ -43,11 +51,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ProyectoDepreciacion.Auth\" />
-    <Folder Include="ProyectoDepreciacion.Reportes\" />
   </ItemGroup>
 
 </Project>

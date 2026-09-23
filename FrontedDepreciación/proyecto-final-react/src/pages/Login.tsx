@@ -93,7 +93,9 @@ export const Login: React.FC = () => {
                 </button>
               </div>
             </div>
-
+                  <p style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: '#9ea2ae' }}>
+  ¿No tienes cuenta? <a href="/registro" style={{ color: '#fff' }}>Regístrate</a>
+</p>
             <div className="form-options">
               <label className="remember-me">
                 <input

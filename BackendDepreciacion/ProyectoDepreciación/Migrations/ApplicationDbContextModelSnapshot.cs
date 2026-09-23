@@ -58,7 +58,7 @@ namespace ProyectoDepreciación.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activos");
+                    b.ToTable("Activos", (string)null);
                 });
 
             modelBuilder.Entity("ProyectoDepreciación.Domain.Entities.Usuario", b =>
@@ -83,7 +83,7 @@ namespace ProyectoDepreciación.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", (string)null);
                 });
 #pragma warning restore 612, 618
         }

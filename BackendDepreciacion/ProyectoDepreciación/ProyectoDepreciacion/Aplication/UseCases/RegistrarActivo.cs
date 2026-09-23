@@ -14,8 +14,12 @@ public class RegistrarActivo
     {
         var (vidaUtil, porcentaje) = ObtenerParametrosPorCategoria(dto.Categoria);
 
+        decimal valorResidual = dto.ValorResidual > 0
+            ? dto.ValorResidual
+            : Math.Round(dto.CostoAdquisicion * 0.10m, 2);
+
         var activo = new Activo(dto.Nombre, dto.Categoria, dto.CostoAdquisicion,
-            dto.ValorResidual, dto.FechaAdquisicion, vidaUtil, porcentaje);
+            valorResidual, dto.FechaAdquisicion, vidaUtil, porcentaje);
 
         await _repository.AgregarAsync(activo);
         await _repository.GuardarCambiosAsync();

@@ -8,4 +8,6 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<Activo> Activos => Set<Activo>();
+
+    public DbSet<Usuario> Usuarios => Set<Usuario>();
 }

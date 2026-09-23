@@ -1,7 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using ProyectoDepreciación.Application.Interfaces;
 using ProyectoDepreciación.Application.UseCases;
+using ProyectoDepreciación.Domain.Services;
 using ProyectoDepreciación.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using ProyectoDepreciación.Infrastructure.Auth;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +25,46 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IActivoRepository, ActivoRepository>();
 builder.Services.AddScoped<RegistrarActivo>();
 
-var app = builder.Build();
+builder.Services.AddScoped<CalculadoraDepreciacion>();
+builder.Services.AddScoped<GenerarReporteDepreciacion>();
 
+builder.Services.AddScoped<ListarActivos>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<RegistrarUsuario>();
+builder.Services.AddScoped<LoginUsuario>();
+builder.Services.AddScoped<JwtTokenGenerator>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        };
+    });
+
+builder.Services.AddAuthorization();
+builder.Services.AddScoped<GenerarReporteConsolidado>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // ajusta si Vite usa otro puerto
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+var app = builder.Build();
+app.UseHttpsRedirection();
+app.UseCors("PermitirFrontend");
+app.UseAuthentication();
+app.UseAuthorization();
 // 5. Configurar Pipeline de Peticiones en Desarrollo
 if (app.Environment.IsDevelopment())
 {
@@ -32,8 +75,6 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

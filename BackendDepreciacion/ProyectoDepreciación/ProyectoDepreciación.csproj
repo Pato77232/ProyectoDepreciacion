@@ -45,4 +45,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProyectoDepreciacion.Auth\" />
+    <Folder Include="ProyectoDepreciacion.Reportes\" />
+  </ItemGroup>
+
 </Project>

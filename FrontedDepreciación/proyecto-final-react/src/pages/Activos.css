@@ -1,0 +1,188 @@
+.activos-container {
+  min-height: 100vh;
+  background-color: #0d0e10;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  padding: 2.5rem 3rem;
+}
+
+.activos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.activos-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a0a4b0;
+  font-size: 0.9rem;
+}
+
+.btn-cerrar-sesion {
+  background-color: transparent;
+  border: 1px solid #2a2d35;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cerrar-sesion:hover {
+  border-color: #ffffff;
+}
+
+.form-crear-activo {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: #121316;
+  border-radius: 8px;
+  border: 1px solid #22252c;
+}
+
+.form-crear-activo input,
+.form-crear-activo select {
+  background-color: #1a1c20;
+  border: 1px solid #2a2d35;
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.form-crear-activo input::placeholder {
+  color: #6b6f7a;
+}
+
+.form-crear-activo input:focus,
+.form-crear-activo select:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+.btn-crear {
+  background-color: #ffffff;
+  color: #0d0e10;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-crear:hover {
+  background-color: #e2e4e9;
+}
+
+.tabla-activos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-activos th {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-bottom: 2px solid #2a2d35;
+  color: #a0a4b0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-activos td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #1a1c20;
+  font-size: 0.9rem;
+}
+
+.tabla-activos tbody tr:hover {
+  background-color: #16181c;
+}
+
+.mensaje-error {
+  color: #f87171;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+.btn-ver-reporte {
+  background-color: transparent;
+  border: 1px solid #3a3d47;
+  color: #ffffff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.btn-ver-reporte:hover {
+  border-color: #ffffff;
+  background-color: #1a1c20;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-reporte {
+  background-color: #121316;
+  border: 1px solid #22252c;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.btn-cerrar-modal {
+  background: transparent;
+  border: none;
+  color: #a0a4b0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.btn-cerrar-modal:hover {
+  color: #ffffff;
+}
+
+.modal-subtitulo {
+  color: #a0a4b0;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}

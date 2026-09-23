@@ -1,7 +1,28 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
+import { Activos } from './pages/Activos';
 
 function App() {
-  return <Login />;
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/activos"
+            element={
+              <ProtectedRoute>
+                <Activos />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;
